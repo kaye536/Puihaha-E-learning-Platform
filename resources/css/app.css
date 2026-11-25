@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* ===== Place search (location map) ===== */
+.place-search{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;padding:.75rem 1rem;border-bottom:1px solid var(--line);background:#fff}
+.place-search-field{flex:1 1 260px;min-width:0;position:relative;display:flex;align-items:center}
+.place-search-field>svg{position:absolute;left:.85rem;width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;pointer-events:none;z-index:1}
+.place-search-field input{padding-left:2.5rem}
+.place-search-field.is-google{display:block}
+.place-search-field.is-google>svg{display:none}
+gmp-place-autocomplete,.place-autocomplete{display:block;width:100%;color-scheme:light;--gmpx-color-surface:#FDFCF8;border-radius:14px}
+.place-search .btn{display:inline-flex;align-items:center;gap:.4rem;white-space:nowrap}
+.place-search .btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.place-search-msg{margin:0;padding:.55rem 1rem;font-size:.85rem;background:var(--tint);color:var(--muted);border-bottom:1px solid var(--line)}
+.place-search-msg.is-error{background:#F7E0DD;color:var(--wine)}
+@media (max-width:560px){.place-search .btn{flex:1 1 auto;justify-content:center}}
+
+/* ===== Birthdate picker ===== */
+.dp{position:relative}
+.dp-input{width:100%;display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.68rem .9rem;border:1.5px solid var(--line-2);border-radius:14px;font:inherit;background:#FDFCF8;color:var(--text);cursor:pointer;text-align:left;transition:border-color .15s,box-shadow .15s}
+.dp-input.is-empty .dp-text{color:#9A938A}
+.dp-input svg{width:19px;height:19px;flex:none;stroke:var(--red);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.dp-input:hover{border-color:var(--red)}
+.dp.is-open .dp-input,.dp-input:focus-visible{border-color:var(--red);box-shadow:0 0 0 4px rgba(129,0,0,.12);outline:none}
+.has-error .dp-input{border-color:var(--red)}
+.dp-pop{position:absolute;z-index:50;top:calc(100% + 8px);left:0;width:min(318px,calc(100vw - 2.4rem));padding:.9rem;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 48px -20px rgba(27,23,23,.45),0 2px 6px rgba(27,23,23,.06)}
+.dp-pop[hidden]{display:none}
+.dp-head{display:grid;grid-template-columns:34px 1fr 86px 34px;gap:.4rem;align-items:center;margin-bottom:.7rem}
+.dp-head select{padding:.42rem .5rem;border-radius:10px;font-size:.88rem;font-weight:600;border-width:1px;background:var(--tint)}
+.dp-nav{width:34px;height:34px;border:0;border-radius:10px;background:var(--tint);color:var(--ink);font-size:1.3rem;line-height:1;cursor:pointer}
+.dp-nav:hover{background:var(--red);color:#fff}
+.dp-dow,.dp-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
+.dp-dow span{font-size:.72rem;font-weight:700;color:var(--muted);padding:.25rem 0;text-transform:uppercase;letter-spacing:.04em}
+.dp-day{aspect-ratio:1;border:0;border-radius:50%;background:transparent;font:inherit;font-size:.88rem;color:var(--text);cursor:pointer}
+.dp-day:hover:not(:disabled){background:var(--tint)}
+.dp-day.is-today{box-shadow:inset 0 0 0 1.5px var(--line-2)}
+.dp-day.is-selected{background:var(--grad-red);color:#fff;font-weight:700;box-shadow:none}
+.dp-day:disabled{color:#C9C3B3;cursor:not-allowed}
+.dp-foot{display:flex;justify-content:space-between;margin-top:.7rem;padding-top:.6rem;border-top:1px solid var(--line)}
+.dp-foot button{border:0;background:none;font:inherit;font-weight:700;font-size:.88rem;cursor:pointer;padding:.3rem .5rem;border-radius:8px}
+.dp-clear{color:var(--muted)} .dp-close{color:var(--red)}
+.dp-foot button:hover{background:var(--tint)}
